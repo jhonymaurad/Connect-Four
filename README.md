@@ -1,6 +1,6 @@
 # Project-1
-Inline-style:
-![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
+
+![alt text](https://git.generalassemb.ly/jhonymaurad/Project-1/blob/master/images/wireframe.jpg "Connect Four")
 
 SPECS:
 
@@ -18,4 +18,4 @@ After there is no more empty cells game ends
 
 LINK:
 
-[Link to Connect Four Game](https://www.google.com "Connect Four")
+[Link to Connect Four Game](https://git.generalassemb.ly/jhonymaurad/Project-1/blob/master/index.html "Connect Four")
