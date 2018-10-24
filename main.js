@@ -1,54 +1,32 @@
-//get the board
 const boardElement = document.querySelector('.board');
-const cells = [
-  [0,0],
-  [1,0],
-  [2,0],
-  [3,0],
-  [4,0],
-  [5,0],
-  [6,0],
+const renderBoard = () =>{
+  for (let row= 0; row < 6; row++) {
+	   for (let col=0; col < 7; col++) {
+	       const cellElement = document.createElement('div');
+         cellElement.className = 'cell';
+         boardElement.appendChild(cellElement);
+         cellElement.setAttribute('data-column', col);
+         cellElement.setAttribute('data-row', row);
+         cellElement.setAttribute('data-value', 0);
+	    }
+  }
+}
+renderBoard();
+//=============================================================
+let board = [];//star the board as an array.
 
-  [0,1],
-  [1,1],
-  [2,1],
-  [3,1],
-  [4,1],
-  [5,1],
-  [6,1],
+//Set it up as a multi-dimensional array, to represent the col/row value for the board
+//every section of the board will be represented by a point on the grid X and Y (col and row).
+//Top left will be 0,0 and as it moves to the right, that will be +x and down will be +y.
+for (row = 0; row < 6; row++) {
+		board[row] = [];
+		for (col = 0; col < 7; col++) {
+				board[row][col] = 0;
+		}
+}
+console.log(board);
+console.log(board.length);
 
-  [0,2],
-  [1,2],
-  [2,2],
-  [3,2],
-  [4,2],
-  [5,2],
-  [6,2],
-
-  [0,3],
-  [1,3],
-  [2,3],
-  [3,3],
-  [4,3],
-  [5,3],
-  [6,3],
-
-  [0,4],
-  [1,4],
-  [2,4],
-  [3,4],
-  [4,4],
-  [5,4],
-  [6,4],
-
-  [0,5],
-  [1,5],
-  [2,5],
-  [3,5],
-  [4,5],
-  [5,5],
-  [6,5],
-];
 //set current player to 1 at the star of game
 let currentPlayer = 1;
 //update players turn
@@ -61,20 +39,16 @@ function updatePlayer (){
   }
 }
 
-//render board with 42 cells
-const  renderBoard = () =>{
-  for (let i = 0; i < cells.length; i++) {
-    const cell = cells[i];
-    const cellElement = document.createElement('div');
-    cellElement.style.left = (cell[0] * 100).toString()+'px';
-    cellElement.style.top = (cell[1] * 100).toString()+'px';
-    cellElement.className = 'cell';
-    //set a new attribute to each div
-    cellElement.setAttribute('data-location', i);
-    boardElement.appendChild(cellElement);
-    let x = cellElement.getAttribute('data-location', i);
-    cellElement.innerHTML = 'col: '+cell[0] +', row: '+ cell[1] + ' '+ x;
-
+//check if cell value is empty and decide to where to drop disk
+function drop(col) {//takes the column
+  for (let row = board.length; row > 0; row--) {//6,5,4,3,2,1 total 6 rows
+    if (board[row][col] === 0){
+      board[row][col] = currentPlayer;
+      //checkWin();
+    }
+    else {
+      //go up in the column
+    }
   }
+  updatePlayer();
 }
-renderBoard();// create board 7 colums by 6 rows

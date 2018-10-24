@@ -9,12 +9,16 @@
   border: solid black;
   height: 600px;
   width: 700px;
-  position: relative;
+  /* position: relative; */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: space-around;
 }
 .cell{
   border:  solid black;
-  position: absolute;
-  width: 100px;
+  /* position: absolute; */
+  width: 99px;
   height: 100px;
 }
 .buttons{
@@ -47,4 +51,14 @@ button:active {
   background-color: #3e8e41;
   box-shadow: 0 5px #666;
   transform: translateY(10px);
+}
+.win-message {
+  position: absolute;
+  width: 100%;
+  top: 110px;
+  background-color: rgba(255,255,255,0.75);
+  font-family: 'Inconsolata', monospace;
+  text-align: center;
+  font-weight: bold;
+  font-size: 5rem;
 }
