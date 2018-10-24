@@ -6,27 +6,20 @@ And set data attributes column, row and a default 0 value;
 const boardElement = document.querySelector('.board');
 const renderBoard = () =>{
   let i = 0;
-  for (let row= 0; row < 6; row++) {
-	   for (let col=0; col < 7; col++) {
+  for (let row = 0; row < 6; row++) {
+	   for (let col = 0; col < 7; col++) {
          i += 1;
 	       const cellElement = document.createElement('div');
          cellElement.className = 'cell';
          cellElement.id = `cell${i}`;
          boardElement.appendChild(cellElement);
-         cellElement.setAttribute('data-column', col);
-         cellElement.setAttribute('data-row', row);
+         cellElement.setAttribute('data-location', i);
          cellElement.setAttribute('data-value', 0);
 	    }
   }
 }
 renderBoard();
 
-const buttonsElements = document.querySelector('.buttons')
-buttonsElements.addEventListener('click', changeColor);
-function changeColor(e) {
-
-  e.target.style.background = 'red';
-}
 //=============================================================
 let board = [];//star the board as an array.
 //Set it up as a multi-dimensional array, to represent the col/row value for the board
@@ -49,17 +42,23 @@ function updatePlayer (){
     currentPlayer = 1;
   }
 }
+const displayWinMessage = () => {
+  if (document.querySelector('.win-message') !== null) {
+    return;
+  }
+  //create div with innerHTML mesage and append to board
+  const winMessageElement = document.createElement('div');
+  winMessageElement.className = 'win-message';
+  winMessageElement.innerHTML = `Player ${currentPlayer} is the winner`;
+  document.querySelector('.board').appendChild(winMessageElement);
+}
 //check if cell value is empty and decide where to drop disk
 function drop(col) {//takes the column
   for (let row = board.length-1; row >= 0; row--) {//6,5,4,3,2,1 total 6 rows
     if(board[row][col] === 0){
       board[row][col] = currentPlayer;
-
-      horizontalWin();
-      //checkWin();
+      checkWin();
       console.log(board);
-      // console.log(horizontalWin());
-      console.log(horizontalWin());
       break;
     }
     else {
@@ -120,4 +119,32 @@ function bottomRigthToUpperLeft(){
     }
   }
   return false;
+}
+function checkWin(){
+  let isWinner = false;
+  let hWin = horizontalWin();
+  let vWin = verticalWin();
+  let dWin = topRightToBottomLeft();
+  let d2Win = bottomRigthToUpperLeft();
+  if(hWin || vWin || dWin || d2Win === true){
+    isWinner = true;
+  }
+  if(isWinner){
+    displayWinMessage();
+  }
+}
+const cellsElements = document.querySelectorAll('.cell');
+console.log(cellsElements);
+function changeColor(col) {//takes the column
+  for (let row = board.length-1; row >= 0; row--) {//6,5,4,3,2,1 total 6 rows
+    if(board[row][col] === 1){
+      cellsElements[col].style.backgroundColor = "#4183f4";
+    }
+    else if(board[row][col] === 2){
+      cellsElements[col].style.backgroundColor = "red";
+    }
+    else{
+      cellsElements[col].style.backgroundColor = "yellow";
+    }
+  }
 }
