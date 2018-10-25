@@ -1,27 +1,3 @@
-/*
-Board div will hold 42 cells for game, to render use nested loop to create one div a time.
-add class name to each dev = 'cell'
-And set data attributes column, row and a default 0 value;
-*/
-const boardElement = document.querySelector('.board');
-const renderBoard = () =>{
-  let i = 0;
-  for (let row = 0; row < 6; row++) {
-	   for (let col = 0; col < 7; col++) {
-
-	       const cellElement = document.createElement('div');
-         cellElement.className = 'cell';
-         cellElement.id = `cell${i}`;
-         boardElement.appendChild(cellElement);
-         cellElement.setAttribute('data-location', i);
-         cellElement.setAttribute('data-value', 0);
-         i += 1;
-	    }
-  }
-}
-renderBoard();
-
-//=============================================================
 let board = [];//star the board as an array.
 //Set it up as a multi-dimensional array, to represent the col/row value for the board
 //every section of the board will be represented by a point on the grid X and Y (col and row).
@@ -32,6 +8,35 @@ for (row = 0; row < 6; row++) {
 				board[row][col] = 0;
 		}
 }
+/*
+Board div will hold 42 cells for game, to render use nested loop to create one div a time.
+add class name to each dev = 'cell'
+And set data attributes column, row and a default 0 value;
+*/
+const boardElement = document.querySelector('.board');
+const renderBoard = () =>{
+  boardElement.innerHTML = '';
+  for (let row = 0; row < 6; row++) {
+	   for (let col = 0; col < 7; col++) {
+	       const cellElement = document.createElement('div');
+         cellElement.className = 'cell';
+         boardElement.appendChild(cellElement);
+         const value = board[row][col];
+         
+         if(value == 1){
+           cellElement.classList.add("playerOne");
+         }else if (value == 2){
+           cellElement.classList.add("playerTwo");
+         }
+         else{
+           cellElement.classList.add('board');
+         }
+	    }
+  }
+}
+renderBoard();
+//=============================================================
+
 //set current player to 1 at the star of game
 let currentPlayer = 1;
 //update players turn
@@ -53,22 +58,22 @@ const displayWinMessage = () => {
   winMessageElement.innerHTML = `Player ${currentPlayer} is the winner`;
   document.querySelector('.board').appendChild(winMessageElement);
 }
+const cellsElements = document.querySelectorAll('.cell');
 //check if cell value is empty and decide where to drop disk
 function drop(col) {//takes the column
-  for (let row = board.length-1; row >= 0; row--) {//6,5,4,3,2,1 total 6 rows
-    if(board[row][col] === 0){
-      board[row][col] = currentPlayer;
-      checkWin();
-      console.log(board);
-      break;
-    }
-    else {
-      //do nothing and move up in the column
-    }
+  for (let row = 5; row >= 0; row--) {//6,5,4,3,2,1 total 6 rows
+      if(board[row][col] === 0){
+        board[row][col] = currentPlayer;
+        renderBoard();
+        checkWin();
+        break;
+      }
+      else {
+        //do nothing and move up in the column
+      }
   }
   updatePlayer();
 }
-
 function horizontalWin() {
   for(let row = 0; row <= 5; row++){
     for(let col = 0; col <= 3; col++){
@@ -132,20 +137,5 @@ function checkWin(){
   }
   if(isWinner){
     displayWinMessage();
-  }
-}
-const cellsElements = document.querySelectorAll('.cell');
-console.log(cellsElements);
-function changeColor(col) {//takes the column
-  for (let row = board.length-1; row >= 0; row--) {//6,5,4,3,2,1 total 6 rows
-    if(board[row][col] === 1){
-      cellsElements[35].style.backgroundColor = "#4183f4";
-    }
-    else if(board[row][col] === 2){
-      cellsElements[35].style.backgroundColor = "red";
-    }
-    else{
-      cellsElements[35].style.backgroundColor = "yellow";
-    }
   }
 }

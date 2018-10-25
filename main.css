@@ -75,3 +75,9 @@ button:active {
 .game-info img{
   margin-left: 70px;
 }
+.playerOne{
+  background-color: red;
+}
+.playerTwo{
+  background-color: blue;
+}
