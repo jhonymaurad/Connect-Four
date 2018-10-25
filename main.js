@@ -8,13 +8,14 @@ const renderBoard = () =>{
   let i = 0;
   for (let row = 0; row < 6; row++) {
 	   for (let col = 0; col < 7; col++) {
-         i += 1;
+
 	       const cellElement = document.createElement('div');
          cellElement.className = 'cell';
          cellElement.id = `cell${i}`;
          boardElement.appendChild(cellElement);
          cellElement.setAttribute('data-location', i);
          cellElement.setAttribute('data-value', 0);
+         i += 1;
 	    }
   }
 }
@@ -138,13 +139,13 @@ console.log(cellsElements);
 function changeColor(col) {//takes the column
   for (let row = board.length-1; row >= 0; row--) {//6,5,4,3,2,1 total 6 rows
     if(board[row][col] === 1){
-      cellsElements[col].style.backgroundColor = "#4183f4";
+      cellsElements[35].style.backgroundColor = "#4183f4";
     }
     else if(board[row][col] === 2){
-      cellsElements[col].style.backgroundColor = "red";
+      cellsElements[35].style.backgroundColor = "red";
     }
     else{
-      cellsElements[col].style.backgroundColor = "yellow";
+      cellsElements[35].style.backgroundColor = "yellow";
     }
   }
 }

@@ -1,20 +1,23 @@
 # Project-1
-
+WIREFRAME:
 ![alt text](https://git.generalassemb.ly/jhonymaurad/Project-1/blob/master/images/wireframe.jpg "Connect Four")
 
 SPECS:
-
--2 player represented by either red or yellow discs
--turn based, after a player places a disc on column switch to other player
--Game board: 7 columns and 6 rows
--Pieces fall down, occupying lowest available space in columns
+Connect Four board size is 7 columns × 6 rows.
+2 player represented by either red or yellow discs.
+players first choose a color and then take turns dropping one colored disc from the top into a seven-column, six-row vertically suspended grid. The pieces fall straight down, occupying the lowest available space within the column.  
 
 WIN CONDITION:
-First player to form horizontal, vertical or diagonal line of his/her discs.
+The objective of the game is to be the first to form a horizontal, vertical, or diagonal line of four of one's own discs.
 
 LOSE CONDITION:
 When other player gets win condition first or
 After there is no more empty cells game ends
+
+MVP:
+working game: all possible winning conditions can be accomplish by the players and a message is display when a player wins.
+
+![alt text](https://git.generalassemb.ly/jhonymaurad/Project-1/blob/master/images/wireframe.jpg "Connect Four")
 
 LINK:
 
