@@ -22,11 +22,12 @@ const renderBoard = () =>{
          cellElement.className = 'cell';
          boardElement.appendChild(cellElement);
          const value = board[row][col];
-         
          if(value == 1){
            cellElement.classList.add("playerOne");
+           document.querySelector('#playerTurn').innerHTML = `Current Player: ${currentPlayer}`;
          }else if (value == 2){
            cellElement.classList.add("playerTwo");
+           document.querySelector('#playerTurn').innerHTML = `Current Player: ${currentPlayer}`;
          }
          else{
            cellElement.classList.add('board');
@@ -62,17 +63,17 @@ const cellsElements = document.querySelectorAll('.cell');
 //check if cell value is empty and decide where to drop disk
 function drop(col) {//takes the column
   for (let row = 5; row >= 0; row--) {//6,5,4,3,2,1 total 6 rows
-      if(board[row][col] === 0){
-        board[row][col] = currentPlayer;
-        renderBoard();
-        checkWin();
+      if(board[row][col] === 0){//initial value is 0
+        board[row][col] = currentPlayer;//change the value of that cell
+        renderBoard();//update the board with current state of board
+        checkWin();//check if any win conditions have met
         break;
       }
       else {
         //do nothing and move up in the column
       }
   }
-  updatePlayer();
+  updatePlayer();//change players turn
 }
 function horizontalWin() {
   for(let row = 0; row <= 5; row++){

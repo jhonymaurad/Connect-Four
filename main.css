@@ -9,16 +9,15 @@ body{
 }
 
 .board{
-  border: solid black;
-  border-width: 3px;
+  border: outset black;
   height: 600px;
   width: 700px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  align-content: stretch;
+  align-content: space-between;
   background-color: #27b24a;
-  box-shadow: 15px 20px #888888;
+  /* box-shadow: 10px 15px #888888; */
 }
 .cell{
   border: solid black;
@@ -76,9 +75,7 @@ button:active {
   background-repeat: no-repeat;
   background-position: right;
 }
-.game-info img{
-  margin-left: 70px;
-}
+
 .playerOne{
   background-image: url('images/zelda.png');
   background-size: contain;
@@ -88,4 +85,18 @@ button:active {
   background-image: url('images/link.png');
   background-size: contain;
   background-repeat: no-repeat;
+}
+#playerTurn{
+  margin-left: 25%;
+  font-size: 30px;
+}
+#imgTitle{
+  width: 430px;
+  height: 100px;
+  float: left;
+  padding-right: 100px;
+}
+#connect4{
+  z-index: -1;
+  /* float: right; */
 }
