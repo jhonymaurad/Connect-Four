@@ -1,6 +1,7 @@
 # Project-1
 WIREFRAME:
-![alt text](https://git.generalassemb.ly/jhonymaurad/Project-1/blob/master/images/Connect_Four.gif"Connect Four")
+
+![alt text](https://git.generalassemb.ly/jhonymaurad/Project-1/blob/master/images/Connect_Four.gif "Connect Four")
 
 SPECS:
 Connect Four board size is 7 columns × 6 rows.

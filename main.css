@@ -17,7 +17,7 @@ body{
   flex-direction: row;
   flex-wrap: wrap;
   align-content: stretch;
-  background-color: #7da7e8;
+  background-color: #27b24a;
   box-shadow: 15px 20px #888888;
 }
 .cell{
@@ -38,7 +38,7 @@ body{
 button{
   background-color: white; /* Green */
   color: black;
-  border: 2px solid #008CBA;
+  border: 2px solid #aa1406;
   text-align: center;
   text-decoration: none;
   font-size: 50px;
@@ -49,11 +49,11 @@ button{
   width: 14%;
 }
 button:hover {
-    background-color: #008CBA;
+    background-color: #2bf25d;
     color: white;
 }
 button:active {
-  background-color: #59cee0;
+  background-color: #0d5920;
   box-shadow: 0 5px #666;
   transform: translateY(10px);
 }
@@ -71,13 +71,21 @@ button:active {
   margin-left: 50px;
   margin-right: 50px;
   font-size: 18px;
+  background-image: url('images/gamebackground.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: right;
 }
 .game-info img{
   margin-left: 70px;
 }
 .playerOne{
-  background-color: red;
+  background-image: url('images/zelda.png');
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 .playerTwo{
-  background-color: blue;
+  background-image: url('images/link.png');
+  background-size: contain;
+  background-repeat: no-repeat;
 }
