@@ -24,9 +24,11 @@ const renderBoard = () =>{
          const value = board[row][col];
          if(value == 1){
            cellElement.classList.add("playerOne");
+           move(cellElement);
            document.querySelector('#playerTurn').innerHTML = `Current Player: ${currentPlayer}`;
          }else if (value == 2){
            cellElement.classList.add("playerTwo");
+           move(cellElement);
            document.querySelector('#playerTurn').innerHTML = `Current Player: ${currentPlayer}`;
          }
          else{
@@ -138,5 +140,18 @@ function checkWin(){
   }
   if(isWinner){
     displayWinMessage();
+  }
+}
+function move(cell) {
+  // var elem = document.getElementById("myAnimation");
+  var pos = 0;
+  var id = setInterval(frame, 10);
+  function frame() {
+    if (pos == 500) {
+      clearInterval(id);
+    } else {
+      pos++;
+      cell.style.top = pos + 'px';
+    }
   }
 }
