@@ -24,10 +24,10 @@ const renderBoard = () =>{
          const value = board[row][col];
          if(value == 1){
            cellElement.classList.add("playerOne");
-           document.querySelector('#playerTurn').innerHTML = `Current Player: ${currentPlayer}`;
+           document.querySelector('#playerTurn').innerHTML = `Current Player: ${playerOneName}`;
          }else if (value == 2){
            cellElement.classList.add("playerTwo");
-           document.querySelector('#playerTurn').innerHTML = `Current Player: ${currentPlayer}`;
+           document.querySelector('#playerTurn').innerHTML = `Current Player: ${playerTwoName}`;
          }
          else{
            cellElement.classList.add('board');
@@ -67,7 +67,7 @@ function drop(col) {//takes the column
         board[row][col] = currentPlayer;//change the value of that cell
         renderBoard();//update the board with current state of board
         checkWin();//check if any win conditions have met
-        playSound(currentPlayer);
+        playSound(currentPlayer);//play differnt sound depending on player
         break;
       }
       else {
@@ -76,6 +76,7 @@ function drop(col) {//takes the column
   }
   updatePlayer();//change players turn
 }
+//check until col 4 becuase after that, player can not win
 function horizontalWin() {
   for(let row = 0; row <= 5; row++){
     for(let col = 0; col <= 3; col++){
@@ -89,6 +90,7 @@ function horizontalWin() {
   }
   return false;
 }
+//check until row 3 becuase after that, player can not win
 function verticalWin() {
   for(let row = 0; row <= 2; row++){
     for(let col = 0; col <= 6; col++){
@@ -102,6 +104,7 @@ function verticalWin() {
   }
   return false;
 }
+//stop at row 3 and col 4
 function topRightToBottomLeft(){
   for (let row = 0; row <= 2; row++) {
     for(let col = 0; col <= 3; col++){
@@ -115,6 +118,7 @@ function topRightToBottomLeft(){
   }
   return false;
 }
+//star at row 4, stop at col 4
 function bottomRigthToUpperLeft(){
   for(let row = 3; row <= 5; row++){
     for(col = 0; col <= 3; col++){
@@ -128,6 +132,7 @@ function bottomRigthToUpperLeft(){
   }
   return false;
 }
+//check if any condition becomes true
 function checkWin(){
   let isWinner = false;
   let hWin = horizontalWin();
@@ -142,6 +147,7 @@ function checkWin(){
     playWinSound();
   }
 }
+//play differnt sound depending on player
 function playSound(player) {
     var sound = document.getElementById("audioLink");
     var soundTwo = document.getElementById('audioZelda');
@@ -152,7 +158,40 @@ function playSound(player) {
       sound.play();
     }
 }
+//sound when a any player wins
 function playWinSound(){
   var soundWin = document.getElementById('audioWin');
   soundWin.play();
+}
+//reset game to original state
+function reset(){
+  location.reload();
+}
+
+
+// Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal
+function displayModal() {
+    modal.style.display = "block";
+}
+function hideModal(){
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+let playerOneName;
+let playerTwoName;
+function setNames(){
+  playerOneName = document.getElementById('p1name').value;
+  playerTwoName = document.getElementById('p2name').value;
 }
