@@ -24,11 +24,9 @@ const renderBoard = () =>{
          const value = board[row][col];
          if(value == 1){
            cellElement.classList.add("playerOne");
-           move(cellElement);
            document.querySelector('#playerTurn').innerHTML = `Current Player: ${currentPlayer}`;
          }else if (value == 2){
            cellElement.classList.add("playerTwo");
-           move(cellElement);
            document.querySelector('#playerTurn').innerHTML = `Current Player: ${currentPlayer}`;
          }
          else{
@@ -69,6 +67,7 @@ function drop(col) {//takes the column
         board[row][col] = currentPlayer;//change the value of that cell
         renderBoard();//update the board with current state of board
         checkWin();//check if any win conditions have met
+        playSound(currentPlayer);
         break;
       }
       else {
@@ -140,18 +139,20 @@ function checkWin(){
   }
   if(isWinner){
     displayWinMessage();
+    playWinSound();
   }
 }
-function move(cell) {
-  // var elem = document.getElementById("myAnimation");
-  var pos = 0;
-  var id = setInterval(frame, 10);
-  function frame() {
-    if (pos == 500) {
-      clearInterval(id);
-    } else {
-      pos++;
-      cell.style.top = pos + 'px';
+function playSound(player) {
+    var sound = document.getElementById("audioLink");
+    var soundTwo = document.getElementById('audioZelda');
+    if(player === 1){
+      soundTwo.play();
     }
-  }
+    else {
+      sound.play();
+    }
+}
+function playWinSound(){
+  var soundWin = document.getElementById('audioWin');
+  soundWin.play();
 }
