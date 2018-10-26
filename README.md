@@ -20,6 +20,38 @@ working game: all possible winning conditions can be accomplish by the players a
 
 ![alt text](https://git.generalassemb.ly/jhonymaurad/Project-1/blob/master/images/wireframe.jpg "Connect Four")
 
+LOG:
+Thursday October 25: Finish all game logic for win conditions. Link javascript with user interface. Changed game theme from Connect Four to Link Four(The legend of Zelda).
+
+Major struggles so far: Functions for win conditions, especially with the functions to check diagonally. Also linking user interface with javascript still not clear.
+
+function topRightToBottomLeft(){
+  for (let row = 0; row <= 2; row++) {
+    for(let col = 0; col <= 3; col++){
+      if(board[row][col] != 0 &&
+         board[row][col] == board[row+1][col+1] &&
+         board[row][col] == board[row+2][col+2] &&
+         board[row][col] == board[row+3][col+3]){
+           return true;
+      }
+    }
+  }
+  return false;
+}
+function bottomRigthToUpperLeft(){
+  for(let row = 3; row <= 5; row++){
+    for(col = 0; col <= 3; col++){
+      if(board[row][col] != 0 &&
+         board[row][col] == board[row-1][col+1] &&
+         board[row][col] == board[row-2][col+2] &&
+         board[row][col] == board[row-3][col+3]){
+           return true;
+      }
+    }
+  }
+  return false;
+}
+
 LINK:
 
 [Link to Connect Four Game](https://git.generalassemb.ly/jhonymaurad/Project-1/blob/master/index.html "Connect Four")
