@@ -8,36 +8,6 @@ for (row = 0; row < 6; row++) {
 				board[row][col] = 0;
 		}
 }
-/*
-Board div will hold 42 cells for game, to render use nested loop to create one div a time.
-add class name to each dev = 'cell'
-And set data attributes column, row and a default 0 value;
-*/
-const boardElement = document.querySelector('.board');
-const renderBoard = () =>{
-  boardElement.innerHTML = '';
-  for (let row = 0; row < 6; row++) {
-	   for (let col = 0; col < 7; col++) {
-	       const cellElement = document.createElement('div');
-         cellElement.className = 'cell';
-         boardElement.appendChild(cellElement);
-         const value = board[row][col];
-         if(value == 1){
-           cellElement.classList.add("playerOne");
-           document.querySelector('#playerTurn').innerHTML = `Current Player: ${playerOneName}`;
-         }else if (value == 2){
-           cellElement.classList.add("playerTwo");
-           document.querySelector('#playerTurn').innerHTML = `Current Player: ${playerTwoName}`;
-         }
-         else{
-           cellElement.classList.add('board');
-         }
-	    }
-  }
-}
-renderBoard();
-//=============================================================
-
 //set current player to 1 at the star of game
 let currentPlayer = 1;
 //update players turn
@@ -49,17 +19,60 @@ function updatePlayer (){
     currentPlayer = 1;
   }
 }
-const displayWinMessage = () => {
+var playerOneName;
+var playerTwoName;
+function setNames(){
+  playerOneName = document.getElementById('p1name').value;
+  playerTwoName = document.getElementById('p2name').value;
+}
+/*
+Board div will hold 42 cells for game, to render use nested loop to create one div a time.
+add class name to each dev = 'cell'
+And set data attributes column, row and a default 0 value;
+*/
+const boardElement = document.querySelector('.board');
+const cellsElements = document.querySelectorAll('.cell');
+function renderBoard (){
+  boardElement.innerHTML = '';
+  for (let row = 0; row < 6; row++) {
+	   for (let col = 0; col < 7; col++) {
+	       const cellElement = document.createElement('div');
+         cellElement.className = 'cell';
+         boardElement.appendChild(cellElement);
+         const value = board[row][col];
+
+         if(value === 1){
+           cellElement.classList.add("playerOne");
+           document.querySelector('#playerTurn').innerHTML = `Current Player: ${currentPlayer} ${playerOneName}`;
+         }
+         else if (value === 2){
+           cellElement.classList.add("playerTwo");
+           document.querySelector('#playerTurn').innerHTML = `Current Player: ${currentPlayer} ${playerTwoName}`;
+         }
+         else{
+           cellElement.classList.add('board');
+         }
+	    }
+  }
+}
+renderBoard();
+//=============================================================
+
+function displayWinMessage () {
   if (document.querySelector('.win-message') !== null) {
     return;
   }
   //create div with innerHTML mesage and append to board
   const winMessageElement = document.createElement('div');
   winMessageElement.className = 'win-message';
-  winMessageElement.innerHTML = `Player ${currentPlayer} is the winner`;
+  if (currentPlayer === 1) {
+    winMessageElement.innerHTML = `${playerOneName} is the winner`;
+  }else{
+    winMessageElement.innerHTML = `${playerTwoName} is the winner`;
+  }
   document.querySelector('.board').appendChild(winMessageElement);
 }
-const cellsElements = document.querySelectorAll('.cell');
+
 //check if cell value is empty and decide where to drop disk
 function drop(col) {//takes the column
   for (let row = 5; row >= 0; row--) {//6,5,4,3,2,1 total 6 rows
@@ -167,31 +180,21 @@ function playWinSound(){
 function reset(){
   location.reload();
 }
-
-
 // Get the modal
 var modal = document.getElementById('myModal');
-
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
-
 // When the user clicks the button, open the modal
 function displayModal() {
     modal.style.display = "block";
 }
+//close modal
 function hideModal(){
     modal.style.display = "none";
 }
-
 // When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
+window.onclick = (event) => {
     if (event.target == modal) {
         modal.style.display = "none";
     }
-}
-let playerOneName;
-let playerTwoName;
-function setNames(){
-  playerOneName = document.getElementById('p1name').value;
-  playerTwoName = document.getElementById('p2name').value;
 }

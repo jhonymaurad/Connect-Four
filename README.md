@@ -25,6 +25,10 @@ Thursday October 25: Finish all game logic for win conditions. Link javascript w
 
 Major struggles so far: Functions for win conditions, especially with the functions to check diagonally. Also linking user interface with javascript still not clear.
 
+Friday October 26: Game completed, added modal to get players names, added a reset button and added sounds to buttons.
+
+Struggled with reset button, decided to use reload function to reset game.
+
 ```
 function topRightToBottomLeft(){
   for (let row = 0; row <= 2; row++) {
@@ -56,3 +60,7 @@ function bottomRigthToUpperLeft(){
 ## LINK:
 
 [Link to Connect Four Game](https://git.generalassemb.ly/jhonymaurad/Project-1/blob/master/index.html "Connect Four")
+
+##CREDIT:
+Blerf-lab exercises, I implemented a similar approach to display the win message.
+All images and sounds are for educational purposes.
