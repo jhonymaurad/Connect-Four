@@ -34,9 +34,12 @@ body{
 
 }
 button{
-  background-color: white; /* Green */
+  background-image: url('images/rupee.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
   color: black;
-  border: 2px solid #aa1406;
+  border: 2px solid white;
   text-align: center;
   text-decoration: none;
   font-size: 50px;
@@ -79,11 +82,13 @@ button:active {
   background-image: url('images/zelda.png');
   background-size: contain;
   background-repeat: no-repeat;
+  border-color: yellow;
 }
 .playerTwo{
   background-image: url('images/link.png');
   background-size: contain;
   background-repeat: no-repeat;
+  border-color: red;
 }
 #playerTurn{
   margin-left: 25%;

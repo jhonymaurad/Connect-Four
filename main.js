@@ -19,8 +19,8 @@ function updatePlayer (){
     currentPlayer = 1;
   }
 }
-var playerOneName;
-var playerTwoName;
+let playerOneName;
+let playerTwoName;
 function setNames(){
   playerOneName = document.getElementById('p1name').value;
   playerTwoName = document.getElementById('p2name').value;
