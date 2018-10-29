@@ -18,7 +18,7 @@ After there is no more empty cells game ends
 ## MVP:
 working game: all possible winning conditions can be accomplish by the players and a message is display when a player wins.
 
-![alt text](https://git.generalassemb.ly/jhonymaurad/Project-1/blob/master/images/wireframe.jpg "Connect Four")
+[alt text](https://git.generalassemb.ly/jhonymaurad/Project-1/blob/master/images/wireframe.jpg "Connect Four")
 
 ## LOG:
 Thursday October 25: Finish all game logic for win conditions. Link javascript with user interface. Changed game theme from Connect Four to Link Four(The legend of Zelda).
@@ -59,7 +59,7 @@ function bottomRigthToUpperLeft(){
 ```
 ## LINK:
 
-[Link to Connect Four Game](https:height-floor.surge.sh)
+[Link to Connect Four Game](https://height-floor.surge.sh)
 
 ## CREDIT:
 Blerf-lab exercises, I implemented a similar approach to display the win message.

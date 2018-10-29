@@ -84,7 +84,7 @@ function drop(col) {//takes the column
         break;
       }
       else {
-        //do nothing and move up in the column
+        //do nothing and move down in the row
       }
   }
   updatePlayer();//change players turn
