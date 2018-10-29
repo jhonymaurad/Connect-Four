@@ -59,7 +59,7 @@ function bottomRigthToUpperLeft(){
 ```
 ## LINK:
 
-[Link to Connect Four Game](https://git.generalassemb.ly/jhonymaurad/Project-1/blob/master/index.html "Connect Four")
+[Link to Connect Four Game](height-floor.surge.sh)
 
 ##CREDIT:
 Blerf-lab exercises, I implemented a similar approach to display the win message.
